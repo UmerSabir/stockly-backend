@@ -19,7 +19,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
-app.use(errorHandler);
 
 // routes
 const apiLimiter = rateLimit({
@@ -41,5 +40,7 @@ app.use("/api/", apiLimiter);
 app.get("/", (req, res) => {
   res.send("Backend is running...");
 });
+
+app.use(errorHandler);
 
 export default app;
