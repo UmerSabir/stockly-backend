@@ -166,10 +166,15 @@ export const toggleTwoFactor = async (req, res) => {
     user.twoFactorEnabled = !user.twoFactorEnabled;
     await user.save();
 
+    // Return user without password
+    const userResponse = user.toObject();
+    delete userResponse.password;
+
     res.json({
       message: `Two‑factor authentication ${
         user.twoFactorEnabled ? "enabled" : "disabled"
       }`,
+      user: userResponse,
       twoFactorEnabled: user.twoFactorEnabled,
     });
   } catch (error) {

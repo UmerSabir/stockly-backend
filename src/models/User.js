@@ -57,6 +57,24 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+
+    // 🏪 Business Settings
+    storeName: {
+      type: String,
+      default: "My Store"
+    },
+
+    currency: {
+      type: String,
+      enum: ["PKR", "USD", "EUR", "GBP"],
+      default: "PKR"
+    },
+
+    lowStockThreshold: {
+      type: Number,
+      default: 10,
+      min: 1
+    }
   },
   { timestamps: true }
 );

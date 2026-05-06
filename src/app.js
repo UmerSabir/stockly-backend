@@ -37,7 +37,6 @@ app.use("/api/users", userRoutes);
 // Apply rate limiting to all API routes
 app.use("/api/", apiLimiter);
 
-
 // test route
 app.get("/", (req, res) => {
   res.send("Backend is running...");
